@@ -78,7 +78,9 @@ export default function Home() {
         <video
           ref={videoRef}
           src="/videos/embers.mp4"
+          autoPlay
           muted
+          defaultMuted
           playsInline
           preload="auto"
           className="absolute inset-0 w-full h-full object-cover z-0 origin-center"
