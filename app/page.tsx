@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -12,6 +12,23 @@ export default function Home() {
   const heroRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      // Forzar carga en iOS Safari
+      videoRef.current.load();
+      
+      // Intentar reproducir y pausar inmediatamente para forzar la descarga del primer fotograma
+      const playPromise = videoRef.current.play();
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          if (videoRef.current) videoRef.current.pause();
+        }).catch(() => {
+          // Autoplay bloqueado por el navegador (ej. modo bajo consumo), ignorar
+        });
+      }
+    }
+  }, []);
 
   useGSAP(() => {
     let lastProgress = 0;
