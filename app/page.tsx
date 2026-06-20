@@ -16,6 +16,7 @@ export default function Home() {
   useEffect(() => {
     if (videoRef.current) {
       // Forzar carga en iOS Safari
+      videoRef.current.defaultMuted = true;
       videoRef.current.load();
       
       // Intentar reproducir y pausar inmediatamente para forzar la descarga del primer fotograma
@@ -97,7 +98,6 @@ export default function Home() {
           src="/videos/embers.mp4"
           autoPlay
           muted
-          defaultMuted
           playsInline
           preload="auto"
           className="absolute inset-0 w-full h-full object-cover z-0 origin-center"
