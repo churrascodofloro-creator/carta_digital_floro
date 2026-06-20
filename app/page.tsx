@@ -68,12 +68,12 @@ export default function Home() {
     });
 
     // 2. Parallax del contenedor de vídeo, sincronizado con el mismo Timeline
-    // El "0" al final significa que esta animación empieza en el instante 0 del timeline
+    // Reducimos el scale de 1.15 a 1.08 y el y de 30% a 15% para que el efecto sea mucho más sutil y elegante
     tl.to(videoRef.current, {
-      scale: 1.15,
-      y: "30%",
+      scale: 1.08,
+      y: "15%",
       opacity: 0.3,
-      ease: "none"
+      ease: "power1.inOut" // Un ease suave para que empiece y termine más progresivamente
     }, 0);
 
     // 3. Parallax inverso del texto
