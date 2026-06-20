@@ -89,8 +89,8 @@ export default function Home() {
       {/* 1. SHORT HERO */}
       <header 
         ref={heroRef}
-        // Cambiamos min-h-[60vh] por min-h-[100vh] para dar más rango real de scroll al hero
-        className="relative w-full min-h-[100vh] flex flex-col items-center justify-center text-center z-10 overflow-hidden"
+        // h-[100dvh] asegura que ocupe exactamente la pantalla en móvil (ignorando la barra de direcciones de Safari)
+        className="relative w-full h-[100dvh] flex flex-col items-center justify-center text-center z-10 overflow-hidden"
       >
         {/* Background Video */}
         <video
